@@ -1,0 +1,21 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+fastapi = "*"
+uvicorn = { extras = ["standard"], version = "*" }
+# Build-time tool. obfy only PRODUCES the protected tree; it is not imported by
+# the running app (the native loader bundled into ./protected is).
+obfy = "*"
+
+[dev-packages]
+
+[requires]
+python_version = "3.12"
+
+[scripts]
+build = "bash build.sh"
+serve = "python protected/run.py"
+dev = "uvicorn main:app --reload --app-dir src"
