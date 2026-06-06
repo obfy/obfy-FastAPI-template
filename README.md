@@ -108,13 +108,6 @@ instead of your source. See
 [packaging](https://docs.camouflage.network/obfy/guides/packaging) and
 [deploying](https://docs.camouflage.network/obfy/deploying).
 
-## Honest posture
-
-Python obfuscation is **deterrence, not encryption-grade security** — CPython must
-eventually execute real bytecode. obfy stops casual copying and raises the cost for
-everyone else; it does not replace legal protection for sensitive IP. See the
-[honest posture](https://docs.camouflage.network/obfy/guides/obfuscation-levels#honest-posture).
-
 ## Docs
 
 Full obfy documentation: **[docs.camouflage.network/obfy](https://docs.camouflage.network/obfy/introduction)**.
