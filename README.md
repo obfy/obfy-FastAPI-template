@@ -68,9 +68,17 @@ self-activating stub, the real code lives encrypted under `protected/__obfy__/`,
 and obfy's native loader is bundled in. Decryption happens in memory at import
 time; plaintext source never lands on disk.
 
-## Why the build flags matter (FastAPI specifics)
+## Obfy level
 
-Two things are **public contracts** that obfuscation must not rename:
+`obfy build` takes `--level 0–5`, a sophistication dial where each level does
+strictly more — `1` strips docstrings, `2` adds string mangling + dead code, `3`
+adds function-local renames, `4` adds cross-module public-name renames, and `5`
+adds native function compilation (eligible functions are lowered to obfy's own
+bytecode VM, so their CPython bytecode never ships). Reference:
+[obfuscation levels](https://docs.camouflage.network/obfy/guides/obfuscation-levels).
+
+**This template builds at `--level 3`** — below cross-module public-name renaming,
+because two things are **public contracts** that obfuscation must not rename:
 
 - **Pydantic field names** (`schemas.py`) map directly to JSON keys and the
   OpenAPI schema. **`--level 3`** stops below cross-module public-name renaming,
